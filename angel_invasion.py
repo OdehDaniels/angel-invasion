@@ -2,6 +2,7 @@ import sys
 import pygame
 
 from settings import Settings
+from Modules.Ship import Ship
 
 class AngelInvasion:
     """Overall class to manage game assets and behavior."""
@@ -13,6 +14,8 @@ class AngelInvasion:
         self.screen = pygame.display.set_mode(
             (self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption("Angel Invasion")
+
+        self.ship = Ship(self)
 
         # Background color.
         self.bg_color = (self.settings.bg_color)
@@ -27,6 +30,7 @@ class AngelInvasion:
             
             # Redraw the screen during each pass through the loop.
             self.screen.fill(self.bg_color)
+            self.ship.blitme()
             # Make the most recently drawn screen visible.
             pygame.display.flip()
 
